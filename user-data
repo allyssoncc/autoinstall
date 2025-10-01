@@ -8,7 +8,6 @@ autoinstall:
   locale: en_US
   keyboard:
     layout: br
-    variant: br-abnt2
   network:
     network:
       version: 2
