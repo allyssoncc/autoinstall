@@ -2,7 +2,10 @@
 autoinstall:
   version: 1
   shutdown: poweroff
-  hostname: ubuntu-ansible
+  identity:
+    hostname: ubuntu-ansible
+    username: admin
+    password: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT." # hashed password with mkpasswd
   locale: en_US
   keyboard:
     layout: br
@@ -24,7 +27,7 @@ autoinstall:
       gecos: 'Admin User'
       shell: /bin/bash
       lock_passwd: false
-      passwd: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT."
+      passwd: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT." # hashed password with mkpasswd
       sudo: 'ALL=(ALL) NOPASSWD:ALL'
       groups: [admin, adm, cdrom, sudo, dip, plugdev, lxd]
       ssh_authorized_keys:
