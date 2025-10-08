@@ -4,9 +4,9 @@ autoinstall:
   shutdown: poweroff
   identity:
     hostname: ubuntu-ansible
-    locale: en_US
-    keyboard:
-      layout: br
+  locale: en_US
+  keyboard:
+    layout: br
   users:
     - name: admin
       password: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT."  # hashed password with mkpasswd
