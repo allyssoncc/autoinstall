@@ -1,10 +1,9 @@
 #cloud-config
 autoinstall:
   version: 1
+  shutdown: poweroff
   identity:
     hostname: ubuntu-ansible
-    username: admin
-    password: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT."
   locale: en_US
   keyboard:
     layout: br
@@ -21,23 +20,15 @@ autoinstall:
     - qemu-guest-agent
   ssh:
     install-server: true
-    authorized-keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCaiGKuYkhdwIlTJhF5wpDZHz1LQjT/VEwcRUQNAraNk7WcAG2x1nxLPzLA3wpO0b+bSdJqnaZxxsuM62cOlk04EgZ+QG4phpfEuvNL/n5jLw8Z8wKsmYTdW0Uqsrq0qXaI+sS57R1hBvwXWqOAggIw1CysjwSW6P8mKbNccFo740ekKkZbv14tFeyyrB93arZcQnkqE/D+eqo8rBEZMVTFTxyXyoAjwhbQgX6urvuqDKrKcErwUKgbGx22QTZQlyG+BC5yZTj5cde5LuHjgGqGuH9jZOzDAzTBqtzw4OD+fxmjhGqTWh8tmchfMReT9Fh11Cv6JgJGyU3GwXpAssROHGev73it6UqftlF46VO7nuXKlzuw9409118b8S/dw4If5KvuW8gj7EajblXgSBzp7SM16dqCQRXmK2giIq3LcSFnrnyRPx73AnSREhFieWODyl7GRJ75XOZuObS+ItMdf6jsYFMSGfuunD1lxns59qN5wayDJJD5WTmfJeUuhnvh8Za0FsswVEO7H+xQC/45GzOGJ+X844twX4HiNmkB2xpotrPGZyJaVDdOrlwKORQBim1yRmE8WgyAgCdQZMQ8dYncuWTXl7V/STesRbDiak7InXA+bvU5t+Blf+PsbFI4L5AH4ckHGyAcWnacjG7tUNRv10lklTQqobFuHUmgnw== allysson@acc-wkt-001
   users:
-    - default
     - name: admin
-      gecos: Admin User
+      gecos: 'Admin User'
       shell: /bin/bash
-      lock_passwd: false
+      lock_passwd: False
       passwd: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT."
-      sudo: ALL=(ALL) NOPASSWD:ALL
-      groups: [adm, sudo]
+      sudo: 'ALL=(ALL) NOPASSWD:ALL'
+      groups: admin, adm, cdrom, sudo, dip, plugdev, lxd
       ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCaiGKuYkhdwIlTJhF5wpDZHz1LQjT/VEwcRUQNAraNk7WcAG2x1nxLPzLA3wpO0b+bSdJqnaZxxsuM62cOlk04EgZ+QG4phpfEuvNL/n5jLw8Z8wKsmYTdW0Uqsrq0qXaI+sS57R1hBvwXWqOAggIw1CysjwSW6P8mKbNccFo740ekKkZbv14tFeyyrB93arZcQnkqE/D+eqo8rBEZMVTFTxyXyoAjwhbQgX6urvuqDKrKcErwUKgbGx22QTZQlyG+BC5yZTj5cde5LuHjgGqGuH9jZOzDAzTBqtzw4OD+fxmjhGqTWh8tmchfMReT9Fh11Cv6JgJGyU3GwXpAssROHGev73it6UqftlF46VO7nuXKlzuw9409118b8S/dw4If5KvuW8gj7EajblXgSBzp7SM16dqCQRXmK2giIq3LcSFnrnyRPx73AnSREhFieWODyl7GRJ75XOZuObS+ItMdf6jsYFMSGfuunD1lxns59qN5wayDJJD5WTmfJeUuhnvh8Za0FsswVEO7H+xQC/45GzOGJ+X844twX4HiNmkB2xpotrPGZyJaVDdOrlwKORQBim1yRmE8WgyAgCdQZMQ8dYncuWTXl7V/STesRbDiak7InXA+bvU5t+Blf+PsbFI4L5AH4ckHGyAcWnacjG7tUNRv10lklTQqobFuHUmgnw== allysson@acc-wkt-001
   late-commands:
     - curtin in-target --target=/target systemctl enable qemu-guest-agent
-  power_state:
-    mode: poweroff
-    message: "Installation complete. Powering off..."
-    timeout: 30
-    condition: true
