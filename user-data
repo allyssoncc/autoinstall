@@ -10,11 +10,10 @@ autoinstall:
   keyboard:
     layout: br
   network:
-    network:
-      version: 2
-      ethernets:
-        ens18:
-          dhcp4: true
+    version: 2
+    ethernets:
+      ens18:
+        dhcp4: true
   storage:
     layout:
       name: lvm
@@ -28,7 +27,6 @@ autoinstall:
         gecos: 'Admin User'
         shell: /bin/bash
         lock_passwd: false
-        passwd: "$6$dIjqTA.D22u9P9LH$uByF1mUt4rlwKt//nGTG6WQiwj9aWJvionud7dHBfVna7H1zx/lUc8mXXJVfct/QcAE1kPg4a4r84MTXZHdmT." # hashed password with mkpasswd
         sudo: ["ALL=(ALL) NOPASSWD:ALL"]
         groups: [admin, adm, cdrom, sudo, dip, plugdev, lxd]
         ssh_authorized_keys:
